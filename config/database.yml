@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+
+development:
+  <<: *default
+  database: petcare_hub_development
+  password: postgres
+
+test:
+  <<: *default
+  database: petcare_hub_test
+  password: postgres
+
+homolog:
+  <<: *default
+  database: petcare_hub_homolog
+  password: postgres
+
+production:
+  <<: *default
+  database: petcare_hub_production
+  username: petcare_hub
+  password: <%= ENV["PETCARE_HUB_DATABASE_PASSWORD"] %>
+  #host: endereco_do_host_producao
